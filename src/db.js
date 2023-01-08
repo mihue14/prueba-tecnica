@@ -38,7 +38,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Booking, Client } = sequelize.models;
+const { Booking, Client, Room } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -46,6 +46,11 @@ Client.hasMany(Booking, { as: "bookings" });
 Booking.belongsTo(Client, {
   foreignKey: "clientId",
   as: "client",
+});
+Room.hasMany(Booking, { as: "bookings" });
+Booking.belongsTo(Room, {
+  foreignKey: "roomId",
+  as: "room",
 });
 
 module.exports = {
