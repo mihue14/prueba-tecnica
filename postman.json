@@ -25,6 +25,21 @@
           "response": []
         },
         {
+          "name": "GET BOOKING BY ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/bookings/c8f16b45-6699-42b4-99b2-9b37201d7a0e",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["bookings", "c8f16b45-6699-42b4-99b2-9b37201d7a0e"]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "CREATE A BOOKING",
           "request": {
             "method": "POST",
@@ -115,6 +130,21 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "GET CLIENT BY ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/clients/02859826-b308-48bf-a786-eee96a0222f7",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["clients", "02859826-b308-48bf-a786-eee96a0222f7"]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -156,6 +186,21 @@
               "host": ["localhost"],
               "port": "3001",
               "path": ["rooms"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET ROOM BY ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/rooms/2cb04119-b1bb-495c-8dc2-53c9a66dab6d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["rooms", "2cb04119-b1bb-495c-8dc2-53c9a66dab6d"]
             }
           },
           "response": []
