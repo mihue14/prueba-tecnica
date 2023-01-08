@@ -11,6 +11,18 @@ const getRooms = async (req, res) => {
   }
 };
 
+const getRoomByID = async (req, res) => {
+  const { id } = req.params;
+  try {
+    // Obtenemos la habitacion por su ID.
+    res.status(200).send(await Room.findByPk(id, { include: "bookings" }));
+  } catch {
+    res
+      .status(500)
+      .json({ message: "El servidor no pudo procesar la solicitud" });
+  }
+};
+
 const createRoom = async (req, res) => {
   let { description } = req.body;
 
@@ -30,5 +42,6 @@ const createRoom = async (req, res) => {
 
 module.exports = {
   getRooms,
+  getRoomByID,
   createRoom,
 };

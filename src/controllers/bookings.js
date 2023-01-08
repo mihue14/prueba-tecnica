@@ -13,6 +13,19 @@ const getBookings = async (req, res) => {
   }
 };
 
+const getBookingsById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    res
+      .status(200)
+      .json(await Booking.findByPk(id, { include: ["client", "room"] }));
+  } catch {
+    res
+      .status(500)
+      .json({ message: "El servidor no pudo procesar la solicitud" });
+  }
+};
+
 const createBooking = async (req, res) => {
   const {
     roomId,
@@ -145,6 +158,7 @@ const changeStatusToDeleted = async (req, res) => {
 
 module.exports = {
   getBookings,
+  getBookingsById,
   createBooking,
   changeStatusToPaid,
   changeStatusToDeleted,
