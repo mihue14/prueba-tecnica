@@ -4,7 +4,8 @@
 
 ### Rooms
 1. GET - Obtener todas las habitaciones incluyendo sus reservas.
-2. POST - Crear una habitación con la información de su descripción.
+2. GET (/:id) - Obtener una habitación por su ID incluyendo sus reservas.
+3. POST - Crear una habitación con la información de su descripción.
 
 ### Bookings 
 1. GET - Obtener todas las reservas incluyendo los datos del cliente que la hizo y la habitación reservada.
@@ -15,3 +16,4 @@
 
 ### Clients
 1. GET - Obtener todos los clientes incluyendo la informacion de sus reservas realizadas.
+2. GET (/:id) - Obtener un cliente por su ID incluyendo la informacion de sus reservas realizadas.
