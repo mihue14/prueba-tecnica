@@ -15,10 +15,6 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("Pendiente", "Pagado", "Eliminado"),
         defaultValue: "Pendiente",
       },
-      roomDetails: {
-        type: DataTypes.STRING(510),
-        allowNull: false,
-      },
       checkIn: {
         type: DataTypes.STRING,
         allowNull: false,
