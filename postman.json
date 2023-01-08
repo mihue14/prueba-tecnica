@@ -1,0 +1,166 @@
+{
+  "info": {
+    "_postman_id": "f3e28e47-1452-4909-9a3b-76786058876c",
+    "name": "Prueba técnica",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19860907"
+  },
+  "item": [
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "GET ALL BOOKINGS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["bookings"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CREATE A BOOKING",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"roomId\":\"2cb04119-b1bb-495c-8dc2-53c9a66dab6d\",\r\n    \"name\":\"Samir\",\r\n    \"lastname\":\"José\",\r\n    \"email\":\"samirjose675@gmailcom\",\r\n    \"NIT\":\"23440000005\",\r\n    \"checkIn\":\"02/02/2023\",\r\n    \"checkOut\":\"04/02/2023\",\r\n    \"amount\":40000,\r\n    \"paymentMethod\":\"Mastercard\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["bookings"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CHANGE STATUS TO PAID",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\":\"c8f16b45-6699-42b4-99b2-9b37201d7a0e\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/bookings/paid",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["bookings", "paid"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CHANGE STATUS TO DELETED",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\":\"c8f16b45-6699-42b4-99b2-9b37201d7a0e\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/bookings/deleted",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["bookings", "deleted"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "GET ALL CLIENTS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/clients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["clients"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rooms",
+      "item": [
+        {
+          "name": "GET ALL ROOMS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/rooms",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["rooms"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CREATE A ROOM",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"description\":\"Se encuentra en Santiago, a 1,6 km del Costanera Center, y ofrece servicio de conserjería, habitaciones para no fumadores, piscina exterior de temporada, WiFi gratuita y jardín. El establecimiento se encuentra a 3 km del Patio Bellavista, a 3,3 km del teleférico de Santiago y a 3,6 km del parque Bicentenario de Santiago. El hotel está a 3,7 km de La Chascona y a 4,1 km del cerro Santa Lucía.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/rooms",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["rooms"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
