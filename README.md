@@ -3,11 +3,13 @@
 ## ENDPOINTS
 
 ### Rooms
+
 1. GET - Obtener todas las habitaciones incluyendo sus reservas.
 2. GET (/:id) - Obtener una habitación por su ID incluyendo sus reservas.
 3. POST - Crear una habitación con la información de su descripción.
 
-### Bookings 
+### Bookings
+
 1. GET - Obtener todas las reservas incluyendo los datos del cliente que la hizo y la habitación reservada.
 2. GET (/:id) - Obtener una reserva por su ID incluyendo los datos del cliente que la hizo y la habitación reservada. Sirve por si solo queremos encontrar una reserva.
 3. POST - Crear una reserva con la información de el nombre, apellido, email y NIT del cliente que la realiza; el ID de la habitación a reservar; los días de checkIn y checkOut; la cantidad a pagar y su método de pago. Cuenta con validacion de fecha, osea que no podremos realizar una nueva reserva si los días elegidos coinciden con los días de reservas previamente realizdas.
@@ -15,5 +17,10 @@
 5. PUT (/deleted) - Cambiar el estadao de la reserva de "Pendiente" a "Eliminado". Al igual que la anterior ruta, esta tambien solo se puede cambiar una vez el estado.
 
 ### Clients
+
 1. GET - Obtener todos los clientes incluyendo la informacion de sus reservas realizadas.
 2. GET (/:id) - Obtener un cliente por su ID incluyendo la informacion de sus reservas realizadas.
+
+### POSTMAN
+
+Link: https://elements.getpostman.com/redirect?entityId=19860907-f3e28e47-1452-4909-9a3b-76786058876c&entityType=collection
