@@ -1,9 +1,11 @@
-const { Booking, Client } = require("../db");
+const { Booking, Client, Room } = require("../db");
 
 const getBookings = async (req, res) => {
   try {
     // Buscamos todos las reservas incluyendo el cliente asociado a ellas.
-    res.status(200).json(await Booking.findAll({ include: "client" }));
+    res
+      .status(200)
+      .json(await Booking.findAll({ include: ["client", "room"] }));
   } catch {
     res
       .status(500)
@@ -13,12 +15,11 @@ const getBookings = async (req, res) => {
 
 const createBooking = async (req, res) => {
   const {
+    roomId,
     name,
     lastname,
     email,
-    DNI,
-    CUIT,
-    roomDetails,
+    NIT,
     checkIn,
     checkOut,
     amount,
@@ -32,24 +33,44 @@ const createBooking = async (req, res) => {
         name,
         lastname,
         email,
-        DNI,
       },
     });
 
+    // Buscamos la habitación que quiere reservar.
+    const roomDB = await Room.findOne({
+      where: { id: roomId },
+      include: "bookings",
+    });
+
+    // Obtenemos todas los checkIns de esa habitación.
+    const roomDBCheckIns = roomDB.dataValues.bookings.map(
+      (b) => b.dataValues.checkIn
+    );
+    // Obtenemos todas los checkOuts de esa habitación.
+    const roomDBCheckOuts = roomDB.dataValues.bookings.map(
+      (b) => b.dataValues.checkOut
+    );
+
+    // Verificamos que los días que se solicitan no estén previamentes reservados.
+    for (let i = 0; i < roomDBCheckIns.length; i++) {
+      if (!(roomDBCheckOuts[i] < checkIn || roomDBCheckIns[i] > checkOut))
+        return res.status(404).json({ message: "Días ya reservados" });
+    }
+
     // Creamos la reserva y le adjuntamos el ID del cliente.
     const postBooking = await Booking.create({
-      billingDetails: { name, lastname, CUIT },
-      roomDetails,
+      billingDetails: { name, lastname, NIT },
       checkIn,
       checkOut,
       amount,
       paymentMethod,
       clientId: clientDB[0].dataValues.id,
+      roomId,
     });
 
     res.status(200).json({ message: "¡Reservado con éxito!", postBooking });
   } catch (err) {
-    console.log(err);
+    console.log("🚀 ~ file: bookings.js:61 ~ createBooking ~ err", err);
     res
       .status(500)
       .json({ message: "El servidor no pudo procesar la solicitud" });
